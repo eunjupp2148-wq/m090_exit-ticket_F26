@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🎬 MSU Gallatin M090 — Exit Ticket (3.0 – 3.3) Shorts Studio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- KaTeX CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --msu-blue: #00205B;
+      --msu-gold: #D1A153;
+      --msu-dark: #070B16;
+      --surface: #0E1528;
+      --card-bg: rgba(18, 27, 49, 0.9);
+      --accent-cyan: #38BDF8;
+      --accent-emerald: #10B981;
+      --accent-rose: #F43F5E;
+      --accent-amber: #F59E0B;
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --border-glow: rgba(56, 189, 248, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 10%, #152243 0%, #080D1D 50%, #03060E 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+      padding: 8px 12px 14px;
+    }
+
+    /* Outer Container */
+    .studio-container {
+      width: 100%;
+      max-width: 1280px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Top Brand Bar */
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 14px;
+      background: rgba(14, 21, 40, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(209, 161, 83, 0.25);
+      border-radius: 10px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .msu-seal {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--msu-blue), #0d327a);
+      border: 1.5px solid var(--msu-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 12px;
+      color: var(--msu-gold);
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 10px rgba(209, 161, 83, 0.3);
+    }
+
+    .brand-title-wrap h1 {
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #FFFFFF;
+    }
+
+    .brand-title-wrap p {
+      font-size: 10.5px;
+      color: var(--msu-gold);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #E2E8F0;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .hub-link:hover {
+      background: var(--msu-blue);
+      border-color: var(--accent-cyan);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Timeline & Progress Bar */
+    .timeline-bar {
+      display: flex;
+      gap: 4px;
+      width: 100%;
+    }
+
+    .timeline-seg {
+      flex: 1;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .timeline-seg.active .seg-fill {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    .timeline-seg.completed .seg-fill {
+      background: var(--accent-emerald);
+      width: 100% !important;
+    }
+
+    .seg-fill {
+      height: 100%;
+      width: 0%;
+      transition: width 0.15s linear;
+    }
+
+    /* Tabs Bar (5 Shorts) */
+    .tabs-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .tabs-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 130px;
+      padding: 6px 10px;
+      background: rgba(14, 21, 40, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
+    }
+
+    .tab-btn:hover {
+      background: rgba(22, 33, 62, 0.9);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #FFFFFF;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(0, 32, 91, 0.8), rgba(14, 30, 68, 0.95));
+      border: 1.5px solid var(--accent-cyan);
+      color: #FFFFFF;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .tab-number {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .tab-title {
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Stage Card (Main Theater) */
+    .stage-card {
+      background: var(--surface);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.12);
+      position: relative;
+    }
+
+    /* Stage Header */
+    .stage-header {
+      padding: 8px 16px;
+      background: rgba(7, 11, 22, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stage-counter-pill {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .instructor-avatars {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .instructor-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #CBD5E1;
+    }
+
+    .avatar-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 10px;
+    }
+
+    .avatar-park {
+      background: #0284c7;
+      color: #FFFFFF;
+      border: 1px solid #38bdf8;
+    }
+
+    .avatar-sora {
+      background: #d97706;
+      color: #FFFFFF;
+      border: 1px solid #f59e0b;
+    }
+
+    /* Main Stage Grid (Balanced 3-column / 2-column Widescreen) */
+    .stage-main {
+      display: grid;
+      grid-template-columns: 0.68fr 1.32fr;
+      gap: 14px;
+      padding: 10px 16px;
+      min-height: auto;
+      align-items: stretch;
+    }
+
+    @media (max-width: 980px) {
+      .stage-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column (Math Card + Subtitles) - Compact & Focused */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .short-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .short-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      background: rgba(209, 161, 83, 0.2);
+      border: 1px solid rgba(209, 161, 83, 0.4);
+      color: var(--msu-gold);
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .short-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #FFFFFF;
+    }
+
+    .short-subtitle {
+      font-size: 11px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* KaTeX Math Card */
+    .math-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 10px;
+      padding: 9px 12px;
+      box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .math-card-badge {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--msu-gold);
+    }
+
+    .math-formula {
+      font-size: 15px;
+      color: #FFFFFF;
+      overflow-x: auto;
+      padding: 1px 0;
+    }
+
+    .math-caption {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Dialogue HUD (Subtitles) */
+    .dialogue-hud {
+      background: rgba(7, 11, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      min-height: 60px;
+    }
+
+    .dialogue-speaker-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .dialogue-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .dialogue-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dialogue-speaker-name {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .dialogue-time {
+      font-size: 9.5px;
+      color: #64748B;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dialogue-text {
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: #E2E8F0;
+    }
+
+    /* Right Column (Canvas & Step Cards Side-by-Side: All Steps Within Screen) */
+    .right-col {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 12px;
+      min-width: 0;
+      align-items: stretch;
+    }
+
+    @media (max-width: 980px) {
+      .right-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-box {
+      background: #03060E;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      height: 100%;
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #parabolaCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .canvas-legend {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      display: flex;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(7, 11, 22, 0.85);
+      padding: 2px 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend-dot {
+      width: 6.5px;
+      height: 6.5px;
+      border-radius: 50%;
+    }
+
+    /* Step Cards Stack - Fully Visible Side-by-Side Stack with Zero Scrolling */
+    .cards-deck {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .step-card {
+      background: rgba(14, 21, 40, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      min-height: 68px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-card:hover {
+      background: rgba(22, 33, 62, 0.95);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateX(2px);
+    }
+
+    .step-card.active {
+      background: linear-gradient(135deg, rgba(0, 32, 91, 0.8), rgba(14, 30, 68, 0.95));
+      border: 1.5px solid var(--accent-cyan);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .card-num-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--accent-cyan);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .step-card.active .card-num-badge {
+      background: var(--accent-cyan);
+      color: #03060E;
+    }
+
+    .card-title-text {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+
+    .card-math-preview {
+      font-size: 13px;
+      color: #FFFFFF;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 1px 0;
+      line-height: 1.35;
+    }
+
+    .card-math-preview .katex-display {
+      margin: 1px 0 !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+      text-align: left !important;
+    }
+
+    .card-math-preview .katex-display > .katex {
+      text-align: left !important;
+    }
+
+    /* Bottom Controls Strip */
+    .controls-strip {
+      padding: 7px 16px;
+      background: rgba(7, 11, 22, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .control-buttons-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ctrl-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent-cyan);
+    }
+
+    .ctrl-btn-primary {
+      background: linear-gradient(135deg, var(--msu-blue), #1e3a8a);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    .ctrl-btn-primary:hover {
+      background: var(--accent-cyan);
+      color: #03060E;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.5);
+    }
+
+    .control-tags-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hashtag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Footer */
+    .studio-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 6px;
+      font-size: 12px;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="studio-container">
+
+    <!-- Top Brand Bar -->
+    <header class="brand-bar">
+      <div class="brand-left">
+        <div class="msu-seal">MSU</div>
+        <div class="brand-title-wrap">
+          <h1>M090 Introductory Algebra • Exit Ticket (3.0 – 3.3) Shorts Studio</h1>
+          <p>Gallatin College MSU • 5 Shorts: Evaluation, Factor GCF, Square Root Property & Graph Reading</p>
+        </div>
+      </div>
+      <div class="brand-right">
+        <a class="hub-link" href="../index.html">
+          <span>🏠</span> All Shorts Hub
+        </a>
+      </div>
+    </header>
+
+    <!-- Progress Segments Timeline (5 Shorts) -->
+    <div class="timeline-bar" id="timelineBar">
+      <div class="timeline-seg" onclick="loadShort(0)">
+        <div class="seg-fill"></div>
+      </div>
+      <div class="timeline-seg" onclick="loadShort(1)">
+        <div class="seg-fill"></div>
+      </div>
+      <div class="timeline-seg" onclick="loadShort(2)">
+        <div class="seg-fill"></div>
+      </div>
+      <div class="timeline-seg" onclick="loadShort(3)">
+        <div class="seg-fill"></div>
+      </div>
+      <div class="timeline-seg" onclick="loadShort(4)">
+        <div class="seg-fill"></div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs (5 Shorts) -->
+    <nav class="tabs-bar" id="tabsBar">
+      <button class="tab-btn active" onclick="loadShort(0)">
+        <span class="tab-number">SHORT 1 • 52s</span>
+        <span class="tab-title">⚡ Exit Ticket #1</span>
+      </button>
+      <button class="tab-btn" onclick="loadShort(1)">
+        <span class="tab-number">SHORT 2 • 50s</span>
+        <span class="tab-title">🧱 Exit Ticket #2</span>
+      </button>
+      <button class="tab-btn" onclick="loadShort(2)">
+        <span class="tab-number">SHORT 3 • 50s</span>
+        <span class="tab-title">🎯 Exit Ticket #3</span>
+      </button>
+      <button class="tab-btn" onclick="loadShort(3)">
+        <span class="tab-number">SHORT 4 • 52s</span>
+        <span class="tab-title">👑 Exit Ticket #4</span>
+      </button>
+      <button class="tab-btn" onclick="loadShort(4)">
+        <span class="tab-number">SHORT 5 • 52s</span>
+        <span class="tab-title">📈 Exit Ticket #5</span>
+      </button>
+    </nav>
+
+    <!-- 16:9 Stage Card (Main Theater) -->
+    <div class="stage-card">
+
+      <!-- Stage Header with Counter & Female Instructors -->
+      <div class="stage-header">
+        <span class="stage-counter-pill" id="counterText">SHORT 1 OF 5 • 16:9 WIDESCREEN</span>
+        <div class="instructor-avatars">
+          <div class="instructor-badge">
+            <div class="avatar-icon avatar-park">EP</div>
+            <span>Prof. Eunju Park (Lead Faculty)</span>
+          </div>
+          <div class="instructor-badge">
+            <div class="avatar-icon avatar-sora">TS</div>
+            <span>TA Sora (Student Advocate)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Stage Grid -->
+      <div class="stage-main">
+
+        <!-- Left Column: Focus, Math Card & Subtitles -->
+        <div class="left-col">
+          <div class="short-title-group">
+            <span class="short-badge" id="shortBadge">⚡ Exit Ticket #1</span>
+            <h1 class="short-title" id="shortTitle">Exit Ticket #1: Evaluating g(-1) & Binomial Shift g(x - 4)</h1>
+            <div class="short-subtitle" id="shortSubtitle">Given g(x) = 2x² - 3x + 7</div>
+          </div>
+
+          <!-- KaTeX Math Card -->
+          <div class="math-card" id="mathCard">
+            <div class="math-card-badge" id="mathCardBadge">Master Solutions</div>
+            <div class="math-formula" id="mathFormula">
+              $$g(-1) = 12 \quad \text{and} \quad g(x - 4) = 2x^2 - 19x + 51$$
+            </div>
+            <div class="math-caption" id="mathCaption">
+              Evaluate with protective parentheses: (-1)² = 1, then distribute 2(x - 4)² = 2x² - 16x + 32.
+            </div>
+          </div>
+
+          <!-- Dialogue HUD (Subtitles) -->
+          <div class="dialogue-hud">
+            <div class="dialogue-speaker-avatar avatar-park" id="speakerAvatar">EP</div>
+            <div class="dialogue-content">
+              <div class="dialogue-header">
+                <span class="dialogue-speaker-name" id="speakerName" style="color:var(--accent-cyan);">Prof. Park</span>
+                <span class="dialogue-time" id="dialogueTime">00:00</span>
+              </div>
+              <div class="dialogue-text" id="dialogueText">
+                "Welcome Bobcats! Let's solve M090 3.0 to 3.3 Exit Ticket Problem #1: given g of x equals 2x squared
+                minus 3x plus 7, evaluate g of negative 1 and g of x minus 4."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Parabola Graph & Step Cards -->
+        <div class="right-col">
+          <!-- Canvas Box -->
+          <div class="canvas-box">
+            <div class="canvas-legend">
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#38bdf8;"></div> Curve
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#ffd700;"></div> Vertex
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#10b981;"></div> Intercepts
+              </div>
+            </div>
+            <canvas id="parabolaCanvas"></canvas>
+          </div>
+
+          <!-- Step Cards Carousel -->
+          <div class="cards-deck" id="cardsDeck">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Controls Strip -->
+      <div class="controls-strip">
+        <div class="control-buttons-left">
+          <button class="ctrl-btn ctrl-btn-primary" id="playBtn" onclick="togglePlay()">
+            ▶ Play Dialogue
+          </button>
+          <button class="ctrl-btn" onclick="prevShort()">⏮ Prev</button>
+          <button class="ctrl-btn" onclick="nextShort()">Next ⏭</button>
+          <button class="ctrl-btn" id="voiceToggleBtn" onclick="toggleMute()">🔊 Audio On</button>
+          <button class="ctrl-btn" onclick="toggleSpeed()" id="speedBtn">⚡ 1.0x</button>
+        </div>
+
+        <div class="control-tags-right" id="tagList">
+          <span class="hashtag">#M090</span>
+          <span class="hashtag">#ExitTicket</span>
+          <span class="hashtag">#GallatinCollege</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <footer class="studio-footer">
+      <div>Montana State University Gallatin College • M090 Introductory Algebra</div>
+      <div class="footer-links">
+        <a href="../index.html">🏠 Shorts Master Hub</a>
+        <a href="../Lecture 33/index.html">Lecture 33 Studio</a>
+        <a href="../Lecture 34/index.html">Lecture 34 Studio</a>
+        <a href="shorts_data.json" target="_blank">📄 Raw JSON</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ------------------------------------------------------------------------
+    // SHORTS DATA FOR EXIT TICKET (3.0 – 3.3)
+    // ------------------------------------------------------------------------
+    const SHORTS_DATA = [
+      {
+        id: "exit-ticket-01",
+        num: 1,
+        shortName: "M090 3.0-3.3 Exit Ticket #1",
+        title: "M090 3.0-3.3 Exit Ticket #1: Evaluating g(-1) & g(x - 4)",
+        subtitle: "Given g(x) = 2x² - 3x + 7",
+        hook: "⚡ Exit Ticket #1",
+        cardBadge: "Evaluation & Binomial Shift",
+        cardLatex: "g(-1) = \\mathbf{12} \\quad \\text{and} \\quad g(x - 4) = \\mathbf{2x^2 - 19x + 51}",
+        cardCaption: "Evaluate with protective parentheses: (-1)² = 1, then expand 2(x - 4)² = 2x² - 16x + 32 and combine like terms.",
+        cards: [
+          { num: 1, title: "Part A: g(-1)", latex: "g(-1) = 2(-1)^2 - 3(-1) + 7 = 2(1) + 3 + 7 = \\mathbf{12}" },
+          { num: 2, title: "Part B: Expand", latex: "(x - 4)^2 = x^2 - 8x + 16 \\implies 2(x^2 - 8x + 16) = 2x^2 - 16x + 32" },
+          { num: 3, title: "Combine Terms", latex: "g(x - 4) = 2x^2 - 16x + 32 - 3x + 12 + 7 = \\mathbf{2x^2 - 19x + 51}" }
+        ],
+        curveData: {
+          curves: [
+            { a: 2, b: -3, c: 7, color: "#38bdf8", label: "g(x) = 2x² - 3x + 7" }
+          ],
+          points: [
+            { x: -1, y: 12, label: "g(-1) = 12", color: "#ffd700" },
+            { x: 0, y: 7, label: "y-int (0, 7)", color: "#10b981" }
+          ],
+          xRange: [-3, 4],
+          yRange: [-2, 18]
+        },
+        tags: ["#M090", "#ExitTicket1", "#FunctionEvaluation", "#BinomialShift", "#GallatinCollege"],
+        dialogues: [
+          { speaker: "Prof. Park", role: "park", text: "Welcome Bobcats! Let's solve M090 3.0 to 3.3 Exit Ticket Problem #1: given g of x equals 2x squared minus 3x plus 7, evaluate g of negative 1 and g of x minus 4." },
+          { speaker: "TA Sora", role: "sora", text: "For Part A, wrap negative 1 in protective parentheses! g of negative 1 equals 2 times negative 1 squared, minus 3 times negative 1, plus 7." },
+          { speaker: "Prof. Park", role: "park", text: "Exponents first: negative 1 squared is positive 1. 2 times 1 is 2. Then negative 3 times negative 1 gives positive 3. 2 plus 3 plus 7 equals 12!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part B, replace every x with the quantity x minus 4! We write 2 times the quantity x minus 4 squared, minus 3 times the quantity x minus 4, plus 7." },
+          { speaker: "Prof. Park", role: "park", text: "Expand x minus 4 squared to get x squared minus 8x plus 16. Multiply by 2: 2x squared minus 16x plus 32." },
+          { speaker: "TA Sora", role: "sora", text: "Distribute negative 3 to get negative 3x plus 12. Combine all like terms: 2x squared minus 19x plus 51! Box your answers: 12 and 2x squared minus 19x plus 51!" }
+        ]
+      },
+      {
+        id: "exit-ticket-02",
+        num: 2,
+        shortName: "M090 3.0-3.3 Exit Ticket #2",
+        title: "M090 3.0-3.3 Exit Ticket #2: Vertex & x-Intercepts of f(x) = 3x² - 12x",
+        subtitle: "Missing Constant Parabola (c = 0)",
+        hook: "🧱 Exit Ticket #2",
+        cardBadge: "GCF Factoring & Vertex Formula",
+        cardLatex: "\\text{Vertex: } \\mathbf{(2, -12)} \\quad \\text{and} \\quad \\text{x-ints: } \\mathbf{(0, 0), \\; (4, 0)}",
+        cardCaption: "With c = 0, find vertex using x = -b/(2a) = 2, then factor out GCF 3x(x - 4) = 0 for roots at x = 0 and x = 4.",
+        cards: [
+          { num: 1, title: "Part A: Vertex", latex: "x_v = \\frac{-(-12)}{2(3)} = 2 \\implies f(2) = 3(4) - 24 = \\mathbf{-12} \\implies \\mathbf{(2, -12)}" },
+          { num: 2, title: "Part B: Factor GCF", latex: "0 = 3x^2 - 12x \\implies 0 = 3x(x - 4)" },
+          { num: 3, title: "Intercepts", latex: "3x = 0 \\implies x = 0, \\quad x - 4 = 0 \\implies x = 4 \\implies \\mathbf{(0, 0), \\; (4, 0)}" }
+        ],
+        curveData: {
+          curves: [
+            { a: 3, b: -12, c: 0, color: "#38bdf8", label: "f(x) = 3x² - 12x" }
+          ],
+          points: [
+            { x: 2, y: -12, label: "Vertex (2, -12)", color: "#ffd700" },
+            { x: 0, y: 0, label: "(0, 0)", color: "#10b981" },
+            { x: 4, y: 0, label: "(4, 0)", color: "#10b981" }
+          ],
+          xRange: [-2, 6],
+          yRange: [-15, 6]
+        },
+        tags: ["#M090", "#ExitTicket2", "#VertexFormula", "#GCFFactoring", "#Intercepts"],
+        dialogues: [
+          { speaker: "Prof. Park", role: "park", text: "On Exit Ticket Problem #2, we examine f of x equals 3x squared minus 12x. Notice constant c is 0!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part A, find the vertex! a equals 3, b equals negative 12. Using x equals negative b over 2a, we get negative negative 12 over 2 times 3." },
+          { speaker: "Prof. Park", role: "park", text: "Positive 12 over 6 equals 2! Now evaluate f of 2: 3 times 2 squared minus 12 times 2. That is 3 times 4 minus 24, giving 12 minus 24, which is negative 12! The vertex is 2, negative 12!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part B, find the x intercepts! Set 3x squared minus 12x equal to 0. Factor out the greatest common factor 3x: 3x times the quantity x minus 4 equals 0!" },
+          { speaker: "Prof. Park", role: "park", text: "Set each factor to zero: 3x equals 0 gives x equals 0. And x minus 4 equals 0 gives x equals 4!" },
+          { speaker: "TA Sora", role: "sora", text: "Our x intercepts are 0, 0 and 4, 0! Notice the center is halfway at x equals 2, exactly matching our vertex!" }
+        ]
+      },
+      {
+        id: "exit-ticket-03",
+        num: 3,
+        shortName: "M090 3.0-3.3 Exit Ticket #3",
+        title: "M090 3.0-3.3 Exit Ticket #3: Vertex & Square Root Property for f(x) = 3x² - 12",
+        subtitle: "Missing Linear Term (b = 0)",
+        hook: "🎯 Exit Ticket #3",
+        cardBadge: "Square Root Property & Symmetry",
+        cardLatex: "\\text{Vertex: } \\mathbf{(0, -12)} \\quad \\text{and} \\quad \\text{x-ints: } \\mathbf{(2, 0), \\; (-2, 0)}",
+        cardCaption: "When b = 0, vertex sits directly on the y-axis at (0, -12). Solve 3x² = 12 via Square Root Property for x = ±2.",
+        cards: [
+          { num: 1, title: "Part A: Vertex", latex: "x_v = \\frac{-0}{2(3)} = 0 \\implies f(0) = 3(0)^2 - 12 = \\mathbf{-12} \\implies \\mathbf{(0, -12)}" },
+          { num: 2, title: "Part B: Isolate", latex: "3x^2 - 12 = 0 \\implies 3x^2 = 12 \\implies x^2 = 4" },
+          { num: 3, title: "Symmetric Roots", latex: "x = \\pm\\sqrt{4} = \\pm 2 \\implies \\mathbf{(2, 0), \\; (-2, 0)}" }
+        ],
+        curveData: {
+          curves: [
+            { a: 3, b: 0, c: -12, color: "#38bdf8", label: "f(x) = 3x² - 12" }
+          ],
+          points: [
+            { x: 0, y: -12, label: "Vertex (0, -12)", color: "#ffd700" },
+            { x: -2, y: 0, label: "(-2, 0)", color: "#10b981" },
+            { x: 2, y: 0, label: "(2, 0)", color: "#10b981" }
+          ],
+          xRange: [-4, 4],
+          yRange: [-15, 8]
+        },
+        tags: ["#M090", "#ExitTicket3", "#SquareRootProperty", "#SymmetricRoots", "#Intercepts"],
+        dialogues: [
+          { speaker: "Prof. Park", role: "park", text: "Exit Ticket Problem #3 contrasts beautifully with Problem #2: here f of x equals 3x squared minus 12. Notice the middle term b is 0!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part A, find the vertex! Since b equals 0, x sub v equals negative 0 over 2 times 3, which is 0! Plugging in 0 gives f of 0 equals negative 12!" },
+          { speaker: "Prof. Park", role: "park", text: "The vertex is 0, negative 12, resting directly on the y axis! Part B asks for the x intercepts." },
+          { speaker: "TA Sora", role: "sora", text: "Set 3x squared minus 12 equal to 0. Add 12 to both sides: 3x squared equals 12! Divide both sides by 3 to isolate x squared: x squared equals 4!" },
+          { speaker: "Prof. Park", role: "park", text: "Now apply the Square Root Property: x equals plus or minus the square root of 4, which gives x equals plus or minus 2!" },
+          { speaker: "TA Sora", role: "sora", text: "Write the x intercepts as ordered pairs: 2, 0 and negative 2, 0! The roots are positive 2 and negative 2, symmetric around the origin!" }
+        ]
+      },
+      {
+        id: "exit-ticket-04",
+        num: 4,
+        shortName: "M090 3.0-3.3 Exit Ticket #4",
+        title: "M090 3.0-3.3 Exit Ticket #4: Vertex Form Features of f(x) = -5(x + 3)² + 180",
+        subtitle: "Vertex Form with a Negative Leading Coefficient",
+        hook: "👑 Exit Ticket #4",
+        cardBadge: "Vertex Form & Intercepts",
+        cardLatex: "\\text{Vertex: } \\mathbf{(-3, 180)}, \\; \\text{y-int: } \\mathbf{(0, 135)}, \\; \\text{x-ints: } \\mathbf{(3, 0), \\; (-9, 0)}",
+        cardCaption: "Evaluate f(0) for y-intercept (0, 135), solve (x + 3)² = 36 for roots at x = 3 and x = -9, and read vertex (-3, 180).",
+        cards: [
+          { num: 1, title: "Part A: y-Intercept", latex: "f(0) = -5(3)^2 + 180 = -45 + 180 = \\mathbf{135} \\implies \\mathbf{(0, 135)}" },
+          { num: 2, title: "Part B: x-Intercepts", latex: "(x + 3)^2 = 36 \\implies x + 3 = \\pm 6 \\implies x = 3, \\; -9 \\implies \\mathbf{(3, 0), \\; (-9, 0)}" },
+          { num: 3, title: "Part C: Vertex", latex: "f(x) = -5(x - (-3))^2 + 180 \\implies \\mathbf{\\text{Vertex: } (-3, 180)}" }
+        ],
+        curveData: {
+          curves: [
+            { a: -5, b: -30, c: 135, color: "#f43f5e", label: "f(x) = -5(x + 3)² + 180" }
+          ],
+          points: [
+            { x: -3, y: 180, label: "Peak (-3, 180)", color: "#ffd700" },
+            { x: 0, y: 135, label: "y-int (0, 135)", color: "#38bdf8" },
+            { x: -9, y: 0, label: "(-9, 0)", color: "#10b981" },
+            { x: 3, y: 0, label: "(3, 0)", color: "#10b981" }
+          ],
+          xRange: [-12, 6],
+          yRange: [-30, 210]
+        },
+        tags: ["#M090", "#ExitTicket4", "#VertexForm", "#SquareRootMethod", "#Optimization"],
+        dialogues: [
+          { speaker: "Prof. Park", role: "park", text: "Problem #4 features f of x equals negative 5 times the quantity x plus 3 then squared plus 180. It has three parts: y intercept, x intercepts, and vertex!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part A, find the y intercept by plugging in x equals 0! f of 0 equals negative 5 times 0 plus 3 squared plus 180." },
+          { speaker: "Prof. Park", role: "park", text: "3 squared is 9. Negative 5 times 9 is negative 45. Negative 45 plus 180 equals 135! The y intercept is 0, 135!" },
+          { speaker: "TA Sora", role: "sora", text: "For Part B, set f of x equal to 0! Subtract 180: negative 180 equals negative 5 times the quantity x plus 3 squared. Divide by negative 5: negative 180 over negative 5 gives 36!" },
+          { speaker: "Prof. Park", role: "park", text: "Apply the Square Root Property: x plus 3 equals plus or minus the square root of 36, which is plus or minus 6! Subtract 3: x equals negative 3 plus or minus 6." },
+          { speaker: "TA Sora", role: "sora", text: "Negative 3 plus 6 is 3, giving 3, 0! Negative 3 minus 6 is negative 9, giving negative 9, 0! And for Part C: vertex form reveals the vertex directly: negative 3, 180!" }
+        ]
+      },
+      {
+        id: "exit-ticket-05",
+        num: 5,
+        shortName: "M090 3.0-3.3 Exit Ticket #5",
+        title: "M090 3.0-3.3 Exit Ticket #5: Comprehensive Graph Reading: f(x) = x² - 6x + 9",
+        subtitle: "8-Part Visual Inspection of a Tangent Parabola",
+        hook: "📈 Exit Ticket #5",
+        cardBadge: "Full Graph Inspection (A–H)",
+        cardLatex: "\\text{Vertex } (3, 0), \\; \\text{y-int } (0, 9), \\; \\text{Min Value } 0 \\text{ at } x = 3, \\; f(2) = 1, \\; f(x)=4 \\implies x = 1, 5",
+        cardCaption: "Read all features from the tangent curve: y-int (0, 9), bouncing root at (3, 0), axis x = 3, min value 0 at x = 3, f(2) = 1, and f(x) = 4 at x = 1, 5.",
+        cards: [
+          { num: 1, title: "A–D: Points", latex: "\\text{y-int: } \\mathbf{(0, 9)}, \\; \\text{x-int: } \\mathbf{(3, 0)}, \\; \\text{Vertex: } \\mathbf{(3, 0)}, \\; \\text{Axis: } \\mathbf{x = 3}" },
+          { num: 2, title: "E–F: Minimum", latex: "\\text{Min value of } f(x): \\mathbf{0} \\quad \\text{at input } \\mathbf{x = 3}" },
+          { num: 3, title: "G–H: Evaluation", latex: "f(2) = \\mathbf{1}, \\quad f(x) = 4 \\implies \\mathbf{x = 1, \\; 5}" }
+        ],
+        curveData: {
+          curves: [
+            { a: 1, b: -6, c: 9, color: "#38bdf8", label: "f(x) = x² - 6x + 9" }
+          ],
+          points: [
+            { x: 3, y: 0, label: "Vertex (3, 0)", color: "#ffd700" },
+            { x: 0, y: 9, label: "y-int (0, 9)", color: "#10b981" },
+            { x: 2, y: 1, label: "f(2) = 1", color: "#f59e0b" },
+            { x: 1, y: 4, label: "(1, 4)", color: "#ec4899" },
+            { x: 5, y: 4, label: "(5, 4)", color: "#ec4899" }
+          ],
+          xRange: [-1, 7],
+          yRange: [-1, 11]
+        },
+        tags: ["#M090", "#ExitTicket5", "#GraphReading", "#AxisOfSymmetry", "#MinimumValue"],
+        dialogues: [
+          { speaker: "Prof. Park", role: "park", text: "Problem #5 asks us to read the graph of f of x equals x squared minus 6x plus 9 to answer eight key questions! Sora, let's read the graph!" },
+          { speaker: "TA Sora", role: "sora", text: "Part A: y intercept! Look where the curve crosses the vertical axis: at 0, 9! Part B: x intercept! The curve touches the horizontal axis at 3, 0!" },
+          { speaker: "Prof. Park", role: "park", text: "Part C: Vertex is that exact turning point: 3, 0! Part D: Axis of Symmetry is the vertical fold line through the vertex: x equals 3!" },
+          { speaker: "TA Sora", role: "sora", text: "Part E asks: What is the minimum value of f of x? Minimum value always means the lowest y-value, which is 0!" },
+          { speaker: "Prof. Park", role: "park", text: "Part F asks: At what x value does the minimum occur? That asks for the input location: x equals 3!" },
+          { speaker: "TA Sora", role: "sora", text: "Part G: find f of 2. Look at x equals 2 and trace up to the graph: y equals 1! And Part H: f of x equals 4 when x equals what? Look at height y equals 4: the line hits at x equals 1 and x equals 5! 100% on the exit ticket!" }
+        ]
+      }
+    ];
+
+    // State Variables
+    let currentShortIdx = 0;
+    let currentDialogueIdx = 0;
+    let isPlaying = false;
+    let isMuted = false;
+    let playbackSpeed = 1.0;
+    let dialogueAdvanceTimer = null;
+    let activeSessionToken = 0;
+    const synth = window.speechSynthesis;
+    let activeUtterance = null;
+
+    // ------------------------------------------------------------------------
+    // UI Initialization
+    // ------------------------------------------------------------------------
+    function initStudio() {
+      renderTabs();
+      loadShort(0);
+      setupGlobalSpeechEvents();
+      window.addEventListener('resize', () => {
+        if (SHORTS_DATA[currentShortIdx]) {
+          drawParabolaGraphic(SHORTS_DATA[currentShortIdx].curveData);
+        }
+      });
+    }
+
+    function renderTabs() {
+      const tabsBar = document.getElementById('tabsBar');
+      tabsBar.innerHTML = '';
+      SHORTS_DATA.forEach((s, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
+        btn.onclick = () => loadShort(idx);
+        btn.innerHTML = `
+          <span class="tab-number">SHORT ${idx + 1} • Exit Ticket #${idx + 1}</span>
+          <span class="tab-title">${s.shortName}</span>
+        `;
+        tabsBar.appendChild(btn);
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // Load Specific Short
+    // ------------------------------------------------------------------------
+    function loadShort(idx) {
+      stopAllAudio();
+      currentShortIdx = idx;
+      currentDialogueIdx = 0;
+
+      const activeShort = SHORTS_DATA[idx];
+
+      // Update Nav Tabs
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+
+      // Update Timeline segments
+      const segs = document.querySelectorAll('.timeline-seg');
+      segs.forEach((s, i) => {
+        s.classList.remove('active', 'completed');
+        const fill = s.querySelector('.seg-fill');
+        if (i < idx) {
+          s.classList.add('completed');
+          fill.style.width = '100%';
+        } else if (i === idx) {
+          s.classList.add('active');
+          fill.style.width = '0%';
+        } else {
+          fill.style.width = '0%';
+        }
+      });
+
+      // Update Header & Main Text
+      document.getElementById('counterText').textContent = `SHORT ${idx + 1} OF 5 • ${activeShort.shortName.toUpperCase()}`;
+      document.getElementById('shortBadge').textContent = activeShort.hook;
+      document.getElementById('shortTitle').textContent = activeShort.title;
+      document.getElementById('shortSubtitle').textContent = activeShort.subtitle;
+
+      // Update KaTeX Math Card
+      document.getElementById('mathCardBadge').textContent = activeShort.cardBadge;
+      const formulaEl = document.getElementById('mathFormula');
+      formulaEl.innerHTML = `$$${activeShort.cardLatex}$$`;
+      document.getElementById('mathCaption').textContent = activeShort.cardCaption;
+
+      // Render KaTeX
+      if (window.renderMathInElement) {
+        renderMathInElement(document.getElementById('mathCard'), {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+
+      // Populate Step Cards Deck
+      const cardsDeck = document.getElementById('cardsDeck');
+      cardsDeck.innerHTML = '';
+      activeShort.cards.forEach((c, cIdx) => {
+        const card = document.createElement('div');
+        card.className = `step-card ${cIdx === 0 ? 'active' : ''}`;
+        card.onclick = () => selectStepCard(cIdx);
+        card.innerHTML = `
+          <div class="card-top-row">
+            <span class="card-num-badge">STEP ${c.num}</span>
+            <span class="card-title-text">${c.title}</span>
+          </div>
+          <div class="card-math-preview">$$${c.latex}$$</div>
+        `;
+        cardsDeck.appendChild(card);
+      });
+
+      if (window.renderMathInElement) {
+        renderMathInElement(cardsDeck, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+
+      // Update Hashtags
+      const tagList = document.getElementById('tagList');
+      tagList.innerHTML = '';
+      activeShort.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'hashtag';
+        span.textContent = t;
+        tagList.appendChild(span);
+      });
+
+      // Update Subtitle & Initial Dialogue
+      updateDialogueDisplay(activeShort.dialogues[0]);
+
+      // Render Parabola Graphic
+      drawParabolaGraphic(activeShort.curveData);
+
+      // Play state handling
+      if (isPlaying) {
+        speakCurrentDialogue();
+      } else {
+        document.getElementById('playBtn').innerHTML = '▶ Play Dialogue';
+      }
+    }
+
+    function selectStepCard(cardIdx) {
+      const cards = document.querySelectorAll('.step-card');
+      cards.forEach((c, i) => c.classList.toggle('active', i === cardIdx));
+    }
+
+    function stopAllAudio() {
+      activeSessionToken++;
+      if (dialogueAdvanceTimer) {
+        clearTimeout(dialogueAdvanceTimer);
+        dialogueAdvanceTimer = null;
+      }
+      if (synth) {
+        synth.cancel();
+      }
+      activeUtterance = null;
+    }
+
+    // ------------------------------------------------------------------------
+    // Clean Math for Speech Synthesis Engine (Strict Negative vs Minus Compliant)
+    // ------------------------------------------------------------------------
+    function cleanMathForSpeech(text) {
+      let spoken = text;
+
+      // 0a. Intercepts and axes: NEVER speak hyphen as minus or negative
+      spoken = spoken.replace(/\b[yY]\s*-\s*intercepts?\b/gi, 'y intercept');
+      spoken = spoken.replace(/\b[xX]\s*-\s*intercepts?\b/gi, 'x intercept');
+      spoken = spoken.replace(/\b[xX]\s*-\s*axis\b/gi, 'x axis');
+      spoken = spoken.replace(/\b[yY]\s*-\s*axis\b/gi, 'y axis');
+      spoken = spoken.replace(/\b[xX]\s*-\s*coordinates?\b/gi, 'x coordinate');
+      spoken = spoken.replace(/\b[yY]\s*-\s*coordinates?\b/gi, 'y coordinate');
+      spoken = spoken.replace(/\b[xX]\s*-\s*values?\b/gi, 'x value');
+      spoken = spoken.replace(/\b[yY]\s*-\s*values?\b/gi, 'y value');
+      spoken = spoken.replace(/\bstep\s*-\s*by\s*-\s*step\b/gi, 'step by step');
+
+      // 0b. Fractions: strictly eliminate the word "slash"
+      spoken = spoken.replace(/\bslash\b/gi, 'over');
+
+      // 0c. Coordinates and ordered pairs containing negative numbers:
+      // (2, -12) -> 2, negative 12
+      // (0, -12) -> 0, negative 12
+      // (-2, 0) -> negative 2, 0
+      // (-3, 180) -> negative 3, 180
+      // (-9, 0) -> negative 9, 0
+      spoken = spoken.replace(/\(\s*-(\d+)\s*,\s*(\d+)\s*\)/g, 'negative $1, $2');
+      spoken = spoken.replace(/\(\s*(\d+)\s*,\s*-(\d+)\s*\)/g, '$1, negative $2');
+      spoken = spoken.replace(/\(\s*-(\d+)\s*,\s*-(\d+)\s*\)/g, 'negative $1, negative $2');
+      spoken = spoken.replace(/\(\s*-(\d+)\s*\)/g, 'negative $1');
+
+      // 0d. Explicit function and equation overrides
+      spoken = spoken.replace(/\bg\(x\)\s*=\s*/gi, 'g of x equals ');
+      spoken = spoken.replace(/\bf\(x\)\s*=\s*/gi, 'f of x equals ');
+      spoken = spoken.replace(/\bg\(-1\)/gi, 'g of negative 1');
+      spoken = spoken.replace(/\bg\(x\s*-\s*4\)/gi, 'g of x minus 4');
+      spoken = spoken.replace(/\bf\(2\)/gi, 'f of 2');
+      spoken = spoken.replace(/\bf\(0\)/gi, 'f of 0');
+
+      // Specific polynomial patterns
+      spoken = spoken.replace(/2x\^2\s*-\s*3x\s*\+\s*7/gi, '2x squared minus 3x plus 7');
+      spoken = spoken.replace(/2x²\s*-\s*3x\s*\+\s*7/gi, '2x squared minus 3x plus 7');
+      spoken = spoken.replace(/2x\^2\s*-\s*19x\s*\+\s*51/gi, '2x squared minus 19x plus 51');
+      spoken = spoken.replace(/2x²\s*-\s*19x\s*\+\s*51/gi, '2x squared minus 19x plus 51');
+      spoken = spoken.replace(/3x\^2\s*-\s*12x/gi, '3x squared minus 12x');
+      spoken = spoken.replace(/3x²\s*-\s*12x/gi, '3x squared minus 12x');
+      spoken = spoken.replace(/3x\^2\s*-\s*12/gi, '3x squared minus 12');
+      spoken = spoken.replace(/3x²\s*-\s*12/gi, '3x squared minus 12');
+      spoken = spoken.replace(/x\^2\s*-\s*6x\s*\+\s*9/gi, 'x squared minus 6x plus 9');
+      spoken = spoken.replace(/x²\s*-\s*6x\s*\+\s*9/gi, 'x squared minus 6x plus 9');
+
+      // 1. Fractions: strictly "the numerator over the denominator", NEVER "slash"
+      spoken = spoken.replace(/\\(?:d?frac)\{([^}]+)\}\{([^}]+)\}/g, '$1 over $2');
+      spoken = spoken.replace(/(\b\d+|[a-zA-Z0-9\(\)\^²]+)\s*\/\s*(\b\d+|[a-zA-Z0-9\(\)]+)/g, '$1 over $2');
+      spoken = spoken.replace(/\s*\/\s*/g, ' over ');
+
+      // 2. Expressions with negative outside and subtraction inside:
+      // For y = -(x - 3)^2, read "negative 1 times the quantity x minus 3 then squared"
+      spoken = spoken.replace(/-\s*\(\s*([a-zA-Z])\s*-\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, 'negative 1 times the quantity $1 minus $2 then squared');
+      spoken = spoken.replace(/-\s*\(\s*([a-zA-Z])\s*\+\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, 'negative 1 times the quantity $1 plus $2 then squared');
+      spoken = spoken.replace(/-(\d+)\s*\(\s*([a-zA-Z])\s*-\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, 'negative $1 times the quantity $2 minus $3 then squared');
+      spoken = spoken.replace(/-(\d+)\s*\(\s*([a-zA-Z])\s*\+\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, 'negative $1 times the quantity $2 plus $3 then squared');
+      spoken = spoken.replace(/(\d+)\s*\(\s*([a-zA-Z])\s*-\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, '$1 times the quantity $2 minus $3 then squared');
+      spoken = spoken.replace(/(\d+)\s*\(\s*([a-zA-Z])\s*\+\s*([a-zA-Z0-9]+)\s*\)\s*(?:\^2|²)/g, '$1 times the quantity $2 plus $3 then squared');
+
+      // 3. Unary negative sign: Use "negative" when symbol indicates that number or expression is negative
+      // e.g. -2, -1, -3, -5, -9, -12, -45, -180
+      spoken = spoken.replace(/(?:^|[(,=[\]:]|\b(?:and|or|is|was|equals?|gives?|yields?|at|to|with|for|in|then|from|as|value|coordinate|root|roots|ordered|pairs?|times)\s+)-(\d+(?:\.\d+)?)/gi, (match, num) => {
+        const prefix = match.slice(0, match.length - num.length - 1);
+        return `${prefix}negative ${num}`;
+      });
+      spoken = spoken.replace(/(?:^|[(,=[\]:]|\b(?:and|or|is|was|equals?|gives?|yields?|at|to|with|for|in|then|from|as)\s+)-(x\^2|x²|ax\^2|ax²|[a-zA-Z])/gi, (match, expr) => {
+        const prefix = match.slice(0, match.length - expr.length - 1);
+        return `${prefix}negative ${expr}`;
+      });
+      spoken = spoken.replace(/(?:^|[(,=[\]]|\s)-(?:\\infty|infinity)/gi, ' negative infinity');
+
+      // 4. Subtraction between quantities: Use "minus"
+      spoken = spoken.replace(/squared\s*-\s*([a-zA-Z0-9]+)/gi, 'squared minus $1');
+      spoken = spoken.replace(/\b([a-zA-Z0-9²^]+)\s*-\s*([a-zA-Z0-9]+)\b/g, (match, left, right) => {
+        if (/^(and|or|is|was|gives|yields|equals|at|to|with|for|in|then|from|as|negative|plus)$/i.test(left)) {
+          return `${left} negative ${right}`;
+        }
+        return `${left} minus ${right}`;
+      });
+
+      // 5. Convert negative numbers and positive numbers to clean spoken words
+      const wordMap = {
+        '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four',
+        '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine',
+        '10': 'ten', '12': 'twelve', '16': 'sixteen', '19': 'nineteen',
+        '24': 'twenty-four', '32': 'thirty-two', '36': 'thirty-six',
+        '45': 'forty-five', '51': 'fifty-one', '135': 'one hundred thirty-five',
+        '180': 'one hundred eighty'
+      };
+
+      // Guarantee: "negative [number]" -> "negative [word]" (e.g. "negative 2" -> "negative two")
+      spoken = spoken.replace(/\bnegative\s+(\d+)\b/gi, (m, d) => `negative ${wordMap[d] || d}`);
+      spoken = spoken.replace(/\bpositive\s+(\d+)\b/gi, (m, d) => `positive ${wordMap[d] || d}`);
+
+      // 6. Guarantee: replace any remaining raw negative numbers like "-2", "-1", "-12" with "negative [word]"
+      spoken = spoken.replace(/\b-(2)\b/g, 'negative two');
+      spoken = spoken.replace(/\b-(1)\b/g, 'negative one');
+      spoken = spoken.replace(/\b-(3)\b/g, 'negative three');
+      spoken = spoken.replace(/\b-(4)\b/g, 'negative four');
+      spoken = spoken.replace(/\b-(5)\b/g, 'negative five');
+      spoken = spoken.replace(/\b-(6)\b/g, 'negative six');
+      spoken = spoken.replace(/\b-(9)\b/g, 'negative nine');
+      spoken = spoken.replace(/\b-(12)\b/g, 'negative twelve');
+      spoken = spoken.replace(/\b-(45)\b/g, 'negative forty-five');
+      spoken = spoken.replace(/\b-(180)\b/g, 'negative one hundred eighty');
+
+      // 7. Guarantee: user request "When you read a number -2, please read 'negative 2 not minus 2'"
+      // If any "minus 2" or "minus two" is NOT preceded by variable subtraction (like "x minus 2"):
+      // Replace with "negative two":
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:2|two)\b/gi, 'negative two');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:1|one)\b/gi, 'negative one');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:3|three)\b/gi, 'negative three');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:5|five)\b/gi, 'negative five');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:9|nine)\b/gi, 'negative nine');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:12|twelve)\b/gi, 'negative twelve');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:45|forty-five)\b/gi, 'negative forty-five');
+      spoken = spoken.replace(/(?<!\b(?:x|y|squared)\s+)minus\s+(?:180|one hundred eighty)\b/gi, 'negative one hundred eighty');
+
+      // 8. Algebraic terminology
+      spoken = spoken
+        .replace(/f\(x\)/g, "f of x")
+        .replace(/g\(x\)/g, "g of x")
+        .replace(/h\(x\)/g, "h of x")
+        .replace(/p\(x\)/g, "p of x")
+        .replace(/ax\^2/g, "a x squared")
+        .replace(/ax²/g, "a x squared")
+        .replace(/2x\^2/g, "two x squared")
+        .replace(/2x²/g, "two x squared")
+        .replace(/3x\^2/g, "three x squared")
+        .replace(/3x²/g, "three x squared")
+        .replace(/x\^2/g, "x squared")
+        .replace(/x²/g, "x squared")
+        .replace(/x_v/g, "x sub v")
+        .replace(/y_v/g, "y sub v")
+        .replace(/±/g, "plus or minus ")
+        .replace(/\\pm/g, "plus or minus ")
+        .replace(/√/g, "square root of ")
+        .replace(/\\sqrt/g, "square root of ")
+        .replace(/≠/g, "is not equal to")
+        .replace(/\\neq/g, "is not equal to")
+        .replace(/≤/g, "is less than or equal to")
+        .replace(/≥/g, "is greater than or equal to")
+        .replace(/\\cdot/g, " times ");
+
+      // 9. Intercept and Axis Pronunciation Guarantee (Never "minus" or "negative")
+      spoken = spoken.replace(/\b[yY]\s+(?:minus|negative)\s+intercepts?\b/gi, 'y intercept');
+      spoken = spoken.replace(/\b[xX]\s+(?:minus|negative)\s+intercepts?\b/gi, 'x intercept');
+      spoken = spoken.replace(/\b[xX]\s+(?:minus|negative)\s+axis\b/gi, 'x axis');
+      spoken = spoken.replace(/\b[yY]\s+(?:minus|negative)\s+axis\b/gi, 'y axis');
+
+      return spoken;
+    }
+
+    // ------------------------------------------------------------------------
+    // UI Update Functions
+    // ------------------------------------------------------------------------
+    function highlightStepForDialogue(dIdx) {
+      let cardIdx = 0;
+      if (dIdx >= 5) cardIdx = 2;
+      else if (dIdx >= 3) cardIdx = 1;
+      else cardIdx = 0;
+      selectStepCard(cardIdx);
+    }
+    function updateDialogueDisplay(d) {
+      if (!d) return;
+      const isPark = (d.role === 'park' || d.speaker === 'Prof. Park');
+      const avatar = document.getElementById('speakerAvatar');
+      const speaker = document.getElementById('speakerName');
+
+      avatar.className = `dialogue-speaker-avatar ${isPark ? 'avatar-park' : 'avatar-sora'}`;
+      avatar.textContent = isPark ? 'EP' : 'TS';
+
+      speaker.style.color = isPark ? 'var(--accent-cyan)' : 'var(--accent-amber)';
+      speaker.textContent = isPark ? 'Prof. Eunju Park' : 'TA Sora';
+
+      document.getElementById('dialogueText').textContent = `"${d.text}"`;
+
+      const totalSec = Math.round(currentDialogueIdx * 8.5);
+      const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
+      const ss = String(totalSec % 60).padStart(2, '0');
+      document.getElementById('dialogueTime').textContent = `${mm}:${ss}`;
+    }
+
+    function updateProgressUI() {
+      const activeShort = SHORTS_DATA[currentShortIdx];
+      const totalDialogues = activeShort.dialogues.length;
+      const currentSegmentPct = ((currentDialogueIdx + 1) / totalDialogues) * 100;
+
+      const segs = document.querySelectorAll('.timeline-seg');
+      for (let i = 0; i < segs.length; i++) {
+        const seg = segs[i];
+        const fill = seg.querySelector('.seg-fill');
+        if (i < currentShortIdx) {
+          seg.classList.add('completed');
+          fill.style.width = '100%';
+        } else if (i === currentShortIdx) {
+          seg.classList.remove('completed');
+          fill.style.width = `${Math.min(100, currentSegmentPct)}%`;
+        } else {
+          seg.classList.remove('completed');
+          fill.style.width = '0%';
+        }
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // Turn-Based Sequential Speech Synthesis (Two Female Voices Only)
+    // ------------------------------------------------------------------------
+    function speakCurrentDialogue() {
+      if (!isPlaying) return;
+      stopAllAudio();
+
+      const session = activeSessionToken;
+      const activeShort = SHORTS_DATA[currentShortIdx];
+      const dialogues = activeShort.dialogues;
+      const d = dialogues[currentDialogueIdx];
+      if (!d) return;
+
+      updateDialogueDisplay(d);
+      updateProgressUI();
+      highlightStepForDialogue(currentDialogueIdx);
+
+      if (isMuted || !('speechSynthesis' in window)) {
+        const readingMs = Math.max(3000, d.text.split(' ').length * 340) / playbackSpeed;
+        dialogueAdvanceTimer = setTimeout(() => {
+          if (session !== activeSessionToken || !isPlaying) return;
+          advanceDialogue();
+        }, readingMs);
+        return;
+      }
+
+      const isPark = (d.role === 'park' || d.speaker === 'Prof. Park');
+      const spoken = cleanMathForSpeech(d.text);
+      const utter = new SpeechSynthesisUtterance(spoken);
+
+      const voices = synth.getVoices();
+      if (voices.length > 0) {
+        // Female voices only (strictly eliminate male voices)
+        const femaleVoices = voices.filter(v => v.lang.startsWith('en') && (
+          /female|zira|susan|aria|jenny|ava|emma|michelle|samantha|karen|hazel|victoria|catherine/i.test(v.name)
+        ));
+
+        if (isPark) {
+          // Prof. Park: FEMALE FACULTY VOICE
+          const parkVoice = femaleVoices.find(v => /jenny|ava|susan|hazel|michelle|catherine/i.test(v.name))
+            || femaleVoices[0]
+            || voices.find(v => v.lang.startsWith('en') && !/male|david|guy|christopher|mark/i.test(v.name))
+            || voices[0];
+          if (parkVoice) utter.voice = parkVoice;
+          utter.pitch = 0.94;
+          utter.rate = 0.95 * playbackSpeed;
+        } else {
+          // TA Sora: FEMALE TA VOICE
+          const soraVoice = femaleVoices.find(v => /aria|emma|samantha|victoria|zira|karen/i.test(v.name))
+            || (femaleVoices.length > 1 ? femaleVoices[femaleVoices.length - 1] : femaleVoices[0])
+            || voices.find(v => v.lang.startsWith('en') && !/male|david|guy|christopher|mark/i.test(v.name))
+            || voices[voices.length - 1];
+          if (soraVoice) utter.voice = soraVoice;
+          utter.pitch = 1.25;
+          utter.rate = 1.06 * playbackSpeed;
+        }
+      } else {
+        utter.rate = (isPark ? 0.95 : 1.06) * playbackSpeed;
+        utter.pitch = isPark ? 0.94 : 1.25;
+      }
+
+      utter.onend = () => {
+        if (session !== activeSessionToken || !isPlaying) return;
+        dialogueAdvanceTimer = setTimeout(() => {
+          if (session !== activeSessionToken || !isPlaying) return;
+          advanceDialogue();
+        }, 400 / playbackSpeed);
+      };
+
+      utter.onerror = (e) => {
+        if (session !== activeSessionToken || !isPlaying) return;
+        if (e.error === 'canceled' || e.error === 'interrupted') return;
+        dialogueAdvanceTimer = setTimeout(() => {
+          if (session !== activeSessionToken || !isPlaying) return;
+          advanceDialogue();
+        }, 3200 / playbackSpeed);
+      };
+
+      activeUtterance = utter;
+      setTimeout(() => {
+        if (session !== activeSessionToken || !isPlaying) return;
+        synth.speak(utter);
+      }, 35);
+    }
+
+    function advanceDialogue() {
+      const activeShort = SHORTS_DATA[currentShortIdx];
+      if (currentDialogueIdx < activeShort.dialogues.length - 1) {
+        currentDialogueIdx++;
+        speakCurrentDialogue();
+      } else {
+        // Auto-advance to next short
+        if (currentShortIdx < SHORTS_DATA.length - 1) {
+          setTimeout(() => {
+            if (!isPlaying) return;
+            nextShort();
+          }, 800 / playbackSpeed);
+        } else {
+          isPlaying = false;
+          document.getElementById('playBtn').innerHTML = '🔄 Replay All';
+          currentDialogueIdx = 0;
+          updateProgressUI();
+        }
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // Playback Controls
+    // ------------------------------------------------------------------------
+    function togglePlay() {
+      if (isPlaying) {
+        isPlaying = false;
+        stopAllAudio();
+        document.getElementById('playBtn').innerHTML = '▶ Play Dialogue';
+      } else {
+        isPlaying = true;
+        document.getElementById('playBtn').innerHTML = '⏸ Pause';
+        speakCurrentDialogue();
+      }
+    }
+
+    function prevShort() {
+      if (currentShortIdx > 0) {
+        loadShort(currentShortIdx - 1);
+      }
+    }
+
+    function nextShort() {
+      if (currentShortIdx < SHORTS_DATA.length - 1) {
+        loadShort(currentShortIdx + 1);
+      }
+    }
+
+    function toggleMute() {
+      isMuted = !isMuted;
+      document.getElementById('voiceToggleBtn').textContent = isMuted ? '🔇 Audio Off' : '🔊 Audio On';
+      if (isMuted) stopAllAudio();
+      else if (isPlaying) speakCurrentDialogue();
+    }
+
+    function toggleSpeed() {
+      const speeds = [1.0, 1.25, 1.5];
+      const cur = speeds.indexOf(playbackSpeed);
+      playbackSpeed = speeds[(cur + 1) % speeds.length];
+      document.getElementById('speedBtn').textContent = `⚡ ${playbackSpeed.toFixed(2)}x`;
+      if (isPlaying) speakCurrentDialogue();
+    }
+
+    function setupGlobalSpeechEvents() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          // Warm up voice list
+        };
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // Canvas Parabola Engine
+    // ------------------------------------------------------------------------
+    function drawParabolaGraphic(curveData) {
+      const canvas = document.getElementById('parabolaCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+
+      const w = rect.width;
+      const h = rect.height;
+
+      // Coordinate ranges
+      const [xMin, xMax] = curveData.xRange || [-5, 5];
+      const [yMin, yMax] = curveData.yRange || [-15, 15];
+
+      function toPxX(x) {
+        return ((x - xMin) / (xMax - xMin)) * w;
+      }
+      function toPxY(y) {
+        return h - ((y - yMin) / (yMax - yMin)) * h;
+      }
+
+      // Background
+      ctx.fillStyle = '#03060E';
+      ctx.fillRect(0, 0, w, h);
+
+      // Grid Lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.lineWidth = 1;
+      for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+        const px = toPxX(x);
+        ctx.beginPath();
+        ctx.moveTo(px, 0);
+        ctx.lineTo(px, h);
+        ctx.stroke();
+      }
+      for (let y = Math.ceil(yMin); y <= Math.floor(yMax); y += Math.max(1, Math.round((yMax - yMin) / 10))) {
+        const py = toPxY(y);
+        ctx.beginPath();
+        ctx.moveTo(0, py);
+        ctx.lineTo(w, py);
+        ctx.stroke();
+      }
+
+      // Axes (x-axis and y-axis)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.lineWidth = 1.5;
+
+      const originX = toPxX(0);
+      const originY = toPxY(0);
+
+      // Y-axis
+      if (originX >= 0 && originX <= w) {
+        ctx.beginPath();
+        ctx.moveTo(originX, 0);
+        ctx.lineTo(originX, h);
+        ctx.stroke();
+      }
+
+      // X-axis
+      if (originY >= 0 && originY <= h) {
+        ctx.beginPath();
+        ctx.moveTo(0, originY);
+        ctx.lineTo(w, originY);
+        ctx.stroke();
+      }
+
+      // Draw Curves
+      if (curveData.curves) {
+        curveData.curves.forEach(c => {
+          ctx.strokeStyle = c.color || '#38bdf8';
+          ctx.lineWidth = 3;
+          ctx.shadowColor = c.color || '#38bdf8';
+          ctx.shadowBlur = 8;
+
+          ctx.beginPath();
+          let started = false;
+          const steps = 180;
+          for (let i = 0; i <= steps; i++) {
+            const x = xMin + (i / steps) * (xMax - xMin);
+            const y = c.a * x * x + c.b * x + c.c;
+            const px = toPxX(x);
+            const py = toPxY(y);
+
+            if (py >= -20 && py <= h + 20) {
+              if (!started) {
+                ctx.moveTo(px, py);
+                started = true;
+              } else {
+                ctx.lineTo(px, py);
+              }
+            } else {
+              started = false;
+            }
+          }
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+        });
+      }
+
+      // Draw Landmark Points (Vertex, Roots, Intercepts)
+      if (curveData.points) {
+        curveData.points.forEach(pt => {
+          const px = toPxX(pt.x);
+          const py = toPxY(pt.y);
+
+          // Outer Glow
+          ctx.fillStyle = pt.color || '#ffd700';
+          ctx.beginPath();
+          ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Border Ring
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(px, py, 7.5, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Text Label
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 12px Plus Jakarta Sans';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+          ctx.shadowBlur = 6;
+
+          let offsetX = 10;
+          let offsetY = -8;
+          if (pt.y > (yMin + yMax) / 2) offsetY = 18;
+          if (pt.x > (xMin + xMax) / 2) offsetX = -ctx.measureText(pt.label).width - 12;
+
+          ctx.fillText(pt.label, px + offsetX, py + offsetY);
+        });
+      }
+    }
+
+    // Initialize once DOM is ready
+    window.addEventListener('DOMContentLoaded', initStudio);
+  </script>
+</body>
+
+</html>
